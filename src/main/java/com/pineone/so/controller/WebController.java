@@ -21,8 +21,8 @@ public class WebController {
 
     @ResponseBody
     @RequestMapping(value = "/domain/{name}", method = RequestMethod.GET)
-    public String domainTest(@PathVariable String name){
-        return dataService.ContextAwareness(name).toJSONString();
+    public JSONObject domainTest(@PathVariable String name){
+        return dataService.ContextAwareness(name);
     }
 
     @ResponseBody
