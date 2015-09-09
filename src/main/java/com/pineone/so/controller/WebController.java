@@ -26,6 +26,12 @@ public class WebController {
     }
 
     @ResponseBody
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public JSONObject test(){
+        return dataService.ContextAwareness("test");
+    }
+
+    @ResponseBody
     @RequestMapping(value = "/checkData/{name}", method = RequestMethod.GET)
     public String sendSDAContext(@PathVariable String name){
 
