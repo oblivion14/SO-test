@@ -40,4 +40,13 @@ public class WebController {
         return "success";
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/mongodb/insert", method = RequestMethod.GET)
+    public String insertMongoDB(){
+
+        dataService.insertMongoDB();
+
+        return "insert Success";
+    }
+
 }

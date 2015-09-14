@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" build-on-make="true" name="SO:war exploded">
+  <artifact type="exploded-war" name="SO:war exploded">
     <output-path>$PROJECT_DIR$/target/SO</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
@@ -24,6 +24,14 @@
           <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpclient:4.1.2" />
           <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpcore:4.1.2" />
           <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.4" />
+          <element id="library" level="project" name="Maven: org.mongodb:mongo-java-driver:2.11.0" />
+          <element id="library" level="project" name="Maven: org.springframework.data:spring-data-mongodb:1.2.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-tx:3.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.data:spring-data-commons:1.5.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.1" />
+          <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.7.1" />
+          <element id="library" level="project" name="Maven: cglib:cglib:2.2.2" />
+          <element id="library" level="project" name="Maven: asm:asm:3.3.1" />
         </element>
       </element>
       <element id="directory" name="META-INF">
