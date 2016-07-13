@@ -3,5 +3,10 @@ package com.pineone.icbms.so.context.device;
 /**
  * Created by melvin on 2016. 7. 11..
  */
-public enum HanyangConceptService {
+public enum HanyangConceptService implements ConceptService {
+    blood_pressure_measure_service,
+    body_temperature_service,
+    electrocardiogram_measure_service,
+    respiration_measure_service,
+    heartbeat_measure_service,
 }
