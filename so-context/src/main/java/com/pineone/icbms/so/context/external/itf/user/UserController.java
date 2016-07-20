@@ -14,13 +14,14 @@ import java.util.List;
 
 /**
  * Created by melvin on 2016. 7. 13..
+ * NOTE: 저작관련 User Interface 제공
  */
-
 @Controller
 public class UserController {
     //
     GeneralContext generalContext;
 
+    //NOTE: GeneralContext 생성 요청 -> DeviceObject 리스트 리턴
     @RequestMapping(value = AddressStore.REQUIRE_GENERALCONTEXT, method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
@@ -31,6 +32,7 @@ public class UserController {
         return deviceObjectList;
     }
 
+    //NOTE: DeviceObject 선택 -> DeviceObject 의 ConceptService list 리턴
     @RequestMapping(value = AddressStore.RETRIEVE_CONCEPTSERVICE, method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
@@ -41,6 +43,7 @@ public class UserController {
         return conceptServiceList;
     }
 
+    //NOTE: GeneralContext 입력 정보 작성 후 등록 -> 등록 결롸 리턴
     @RequestMapping(value = AddressStore.REGISTER_GENERALCONTEXT, method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
@@ -59,6 +62,7 @@ public class UserController {
         return responseMessage;
     }
 
+    //NOTE: GeneralContextList 조회 -> GeneralContextList 리턴
     @RequestMapping(value = AddressStore.RETRIEVE_GENERALCONTEXT, method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody
@@ -69,6 +73,7 @@ public class UserController {
         return generalContextList;
     }
 
+    //NOTE: GeneralContext 상세 정보 조회 -> 상세정보 리턴
     @RequestMapping(value = AddressStore.RETRIEVE_GENERALCONTEXT_DETAIL, method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     @ResponseBody

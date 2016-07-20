@@ -4,6 +4,7 @@ import com.pineone.icbms.so.context.GeneralContext;
 
 /**
  * Created by melvin on 2016. 7. 13..
+ * NOTE : User 에게 전달할 메세지 생성
  */
 public class ResponseMessageToUser {
 
@@ -15,7 +16,7 @@ public class ResponseMessageToUser {
         return responseMessage;
     }
 
-
+    // NOTE : 전달 메세지 생성
     public String generalContextResultMessage(GeneralContext generalContext){
         message = "Name : " + generalContext.getName() + " Virtual Object : " + generalContext.getDeviceObject()
                 + " Concept Service" + generalContext.getConceptService() +

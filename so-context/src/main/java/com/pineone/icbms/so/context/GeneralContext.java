@@ -3,17 +3,16 @@ package com.pineone.icbms.so.context;
 import com.pineone.icbms.so.context.device.ConceptService;
 import com.pineone.icbms.so.context.device.DeviceCenter;
 import com.pineone.icbms.so.context.device.DeviceObject;
-import com.pineone.icbms.so.context.external.itf.database.DatabaseInterface;
 import com.pineone.icbms.so.context.external.itf.database.MapController;
-import com.sun.tools.javac.jvm.Gen;
+import com.pineone.icbms.so.context.external.itf.sda.SdaController;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 /**
  * Created by melvin on 2016. 7. 7..
+ * NOTE: GeneralContext Entity
  */
 public class GeneralContext implements Context {
     private String id;
@@ -22,6 +21,7 @@ public class GeneralContext implements Context {
     private int minValue;
     private int maxValue;
     private ConceptService conceptService;
+    private MapController mapController = MapController.newMapController();
 
     public GeneralContext(){}
 
@@ -108,50 +108,52 @@ public class GeneralContext implements Context {
 //        return contextTypeArrayList;
 //    }
 
+    //NOTE: DeviceObject List 조회
     public List<DeviceObject> retrieveDeviceObjectList(){
         //
         return DeviceCenter.retrieveDeviceObjectList();
     }
 
+    //NOTE: DeviceObject 의 ConceptService List 조회
     public List<ConceptService> retrieveConceptService(DeviceObject deviceObject){
         //
         return DeviceCenter.newDeviceCenter().retrieveConceptServiceList(deviceObject);
     }
 
-    // DB 저장 모듈
+    //NOTE: DB에 GeneralContext 저장
     public void createGeneralContext(GeneralContext generalContext){
         //
-        MapController mapController = MapController.newMapController();
         mapController.createGeneralContext(generalContext);
     }
-    // SDA에 컨텍스트 저장 모듈
+    //NOTE: SDA 에 GeneralContext 저장
     public void registerGeneralContext(GeneralContext generalContext){
         //
-        //sdaInterface.registerGeneralContextToSDA(generalContext)
+        SdaController.newSdaController().registerGeneralContext(generalContext);
         this.createGeneralContext(generalContext);
     }
 
-    // DB _ GeneralContext 조회
+    // NOTE: DB 에서 GeneralContext 조회(User 의 조회요청에 따라)
     public List<GeneralContext> retrieveGeneralContextList(){
         //
-        MapController mapController = MapController.newMapController();
         List<GeneralContext> generalContextList = mapController.retrieveGeneralContextList();
         return generalContextList;
     }
 
-    // SDA_GeneralContextList 조회
+    // NOTE: SDA 에서 GeneralContextList 조회(SO 에서 주기적으로 동기화시키기 위해서)
     public List<GeneralContext> retrieveGeneralContextListFromSDA(){
         //
+        List<Object> objectList = SdaController.newSdaController().retrieveGeneralContextListFromSDA();
         List<GeneralContext> generalContextList = new ArrayList<>();
-        //generalContextList = sdaInterface.retrieveGeneralContextList();
-        return null; //generalContextList
+        for(Object object : objectList){
+            generalContextList.add((GeneralContext)object);
+        }
+        return generalContextList; //generalContextList
     }
 
-    // SDA_GeneralContext 상세 조회
+    // NOTE: SDA 에서 GeneralContext 상세 조회
     public GeneralContext retrieveGeneralContext(String generalContextName){
         //
-        GeneralContext generalContext = newGeneralContext();
-        //generalContext = sdaInterface.retrieveGeneralContext(generalContextName);
-        return null; // generalContext
+        GeneralContext generalContext = SdaController.newSdaController().retrieveGeneralContextDetail(generalContextName);
+        return generalContext;
     }
 }

@@ -6,9 +6,8 @@ import java.util.Properties;
 
 /**
  * Created by melvin on 2016. 7. 11..
- * Context를 등록하기 위한 Address를 관리 - 기본 Address의 변경을 통합적으로 관리
- * SDA 변경시 사용
- */
+ * NOTE: Context 를 등록하기 위한 Address 를 관리 - 기본 Address 의 변경을 통합적으로 관리
+ **/
 public class ContextAddress {
 
     private ContextAddress(){};

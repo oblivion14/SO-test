@@ -6,6 +6,7 @@ import java.util.*;
 
 /**
  * Created by melvin on 2016. 7. 13..
+ * NOTE: DB 생성 전까지 MAP 사용.
  */
 public class MapController implements DatabaseInterface{
 
@@ -17,11 +18,13 @@ public class MapController implements DatabaseInterface{
         return mapController;
     }
 
+    //NOTE: DB에 GeneralContext 데이터 생성
     public void createGeneralContext(GeneralContext generalContext){
         //
         generalContextStore.put(generalContext.getName(),generalContext);
     }
 
+    //NOTE: DB 에서 GeneralContextList 조회
     public List<GeneralContext> retrieveGeneralContextList(){
         //
         List<GeneralContext> generalContextList = new ArrayList<>();

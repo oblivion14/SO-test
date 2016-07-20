@@ -5,18 +5,18 @@ import java.util.List;
 
 /**
  * Created by melvin on 2016. 7. 11..
+ * NOTE: DeviceObject(VO and CVO), ConceptService 관리
  */
 public class DeviceCenter {
-
-    public static ArrayList<DeviceObject> deviceObjectArrayList;
 
     public static DeviceCenter newDeviceCenter(){
         DeviceCenter deviceCenter = new DeviceCenter();
         return deviceCenter;
     }
 
+    //NOTE : DeviceObject(VO and CVO) 조회
     public static List<DeviceObject> retrieveDeviceObjectList(){
-        deviceObjectArrayList = new ArrayList<DeviceObject>();
+        ArrayList<DeviceObject> deviceObjectArrayList = new ArrayList<DeviceObject>();
         for(VirtualObject virtualObject : VirtualObject.values()) {
             deviceObjectArrayList.add(virtualObject);
         }
@@ -26,6 +26,7 @@ public class DeviceCenter {
         return deviceObjectArrayList;
     }
 
+    //NOTE: DeviceObject 의 ConceptService 조회
     public List<ConceptService> retrieveConceptServiceList(DeviceObject deviceObject){
         List<ConceptService> conceptServiceList = new ArrayList<ConceptService>();
         if(deviceObject.equals(VirtualObject.TemperatureSensor001)){

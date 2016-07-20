@@ -1,4 +1,4 @@
-package com.pineone.icbms.so.context.external.itf.sda;
+package com.pineone.icbms.so.context.util;
 
 import com.withwiz.beach.network.http.message.IHttpResponseMessage;
 import com.withwiz.jellyfish.service.IGenericService;
@@ -15,6 +15,7 @@ import java.util.HashMap;
 /**
  * ClientService class<BR/>
  * Created by use on 2015-10-12.
+ * NOTE: 외부 통신을 위해 사용
  */
 public class ClientService
 {
@@ -28,6 +29,7 @@ public class ClientService
 	 * @param serviceUrl
 	 * @param body
 	 * @return
+	 * NOTE: URL 로 Body 내용 전송
 	 */
 	public IHttpResponseMessage requestPostService(String serviceUrl, String body)
 	{
@@ -67,7 +69,8 @@ public class ClientService
 	 * 
 	 * @param uri
 	 * @return
-	 */
+	   NOTE: 외부에서 데이터를 조회하기 위함. Url 의 내용을 조회
+	  */
 	public IHttpResponseMessage requestGetService(String uri)
 	{
 		// request delivery message
