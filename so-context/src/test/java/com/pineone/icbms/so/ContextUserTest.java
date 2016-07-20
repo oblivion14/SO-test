@@ -90,6 +90,8 @@ public class ContextUserTest {
         String sendData = DataConversion.objectToString(generalContext);
         contextAddress = ContextAddress.newContextAddress();
 
+        System.out.println(" *** Step3 - Request : registerGeneralContextToSDA , Response : result ***");
+        System.out.println();
         mockServer
                 .when(HttpRequest.request().withMethod("POST").withBody(sendData)
                         .withPath(AddressStore.REGISTER_GENERALCONTEXT))
@@ -115,10 +117,13 @@ public class ContextUserTest {
         generalContext.setConceptService(conceptService);
 
         generalContext.createGeneralContext(generalContext);
+
+        System.out.println(" *** Step4 - Request : registerGeneralContextToDB , Response : generalContextList ***");
+        System.out.println();
+
         List<GeneralContext> generalContextList = generalContext.retrieveGeneralContextList();
         for(GeneralContext generalContext : generalContextList){
             System.out.println(generalContext.getName());
         }
-
     }
 }

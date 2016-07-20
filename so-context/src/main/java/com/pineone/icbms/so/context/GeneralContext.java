@@ -21,7 +21,7 @@ public class GeneralContext implements Context {
     private int minValue;
     private int maxValue;
     private ConceptService conceptService;
-    private MapController mapController = MapController.newMapController();
+
 
     public GeneralContext(){}
 
@@ -123,6 +123,7 @@ public class GeneralContext implements Context {
     //NOTE: DB에 GeneralContext 저장
     public void createGeneralContext(GeneralContext generalContext){
         //
+        MapController mapController = MapController.getInstance();
         mapController.createGeneralContext(generalContext);
     }
     //NOTE: SDA 에 GeneralContext 저장
@@ -135,6 +136,7 @@ public class GeneralContext implements Context {
     // NOTE: DB 에서 GeneralContext 조회(User 의 조회요청에 따라)
     public List<GeneralContext> retrieveGeneralContextList(){
         //
+        MapController mapController = MapController.getInstance();
         List<GeneralContext> generalContextList = mapController.retrieveGeneralContextList();
         return generalContextList;
     }

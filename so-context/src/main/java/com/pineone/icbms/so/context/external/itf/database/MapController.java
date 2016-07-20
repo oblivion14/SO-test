@@ -10,13 +10,9 @@ import java.util.*;
  */
 public class MapController implements DatabaseInterface{
 
+    private static MapController instance;
+    private MapController(){}
     private Map<String, GeneralContext> generalContextStore = new HashMap<String, GeneralContext>();
-
-    public static MapController newMapController(){
-        //
-        MapController mapController = new MapController();
-        return mapController;
-    }
 
     //NOTE: DB에 GeneralContext 데이터 생성
     public void createGeneralContext(GeneralContext generalContext){
@@ -25,12 +21,19 @@ public class MapController implements DatabaseInterface{
     }
 
     //NOTE: DB 에서 GeneralContextList 조회
-    public List<GeneralContext> retrieveGeneralContextList(){
+    public List<GeneralContext> retrieveGeneralContextList() {
         //
         List<GeneralContext> generalContextList = new ArrayList<>();
-        for(String key : generalContextStore.keySet()){
+        for (String key : generalContextStore.keySet()) {
             generalContextList.add(generalContextStore.get(key));
         }
         return generalContextList;
     }
+
+    public static MapController getInstance(){
+        if(instance == null)
+            instance = new MapController();
+        return instance;
+    }
 }
+
